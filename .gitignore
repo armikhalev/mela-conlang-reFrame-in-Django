@@ -137,5 +137,7 @@ sketch
 
 ### other stuff ###
 datadump.json
+/melavenv
+/static
 
 # End of https://www.gitignore.io/api/react,django

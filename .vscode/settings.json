@@ -1,5 +1,5 @@
 {
-	"python.pythonPath": "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+	"python.pythonPath": "/Users/megatron/Documents/my-projects/mela_backend_2/melavenv/bin/python3",
 	"python.linting.pylintEnabled": true,
 	"python.linting.enabled": true
 }

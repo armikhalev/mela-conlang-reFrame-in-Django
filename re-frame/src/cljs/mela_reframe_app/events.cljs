@@ -14,10 +14,10 @@
             [cljs.pprint :as pp]
             [re-frame.core :refer [reg-event-db reg-event-fx inject-cofx]]))
 
-;; (def domain-name "http://melasi.pythonanywhere.com/")
+(def domain-name "https://www.mela-conlang.site/")
 
 ;; development server
-(def domain-name "http://localhost:8000/")
+;; (def domain-name "http://localhost:8000/")
 
 ;; we create an interceptor using `after`
 (def check-spec-interceptor (re-frame/after (partial spec-it ::db/db)))
