@@ -14,7 +14,7 @@ class GrammarCard(models.Model):
 class Koyla(models.Model):
     "Word both in English and Mela with comments and optional GrammarCard"
     word = models.CharField(max_length=30)
-    la = models.CharField(max_length=30)
+    la = models.CharField(max_length=100)
     comment = models.CharField(max_length=1000)
     grammarCard = models.ForeignKey(GrammarCard, null=True, blank=True, on_delete=models.SET_NULL)
 
