@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'x#&*$_t*py%6&ur7uyqdx*$lh@un1fgo(dvbilmcwqj$nwe!b%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     "0.0.0.0",
@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'rest_framework_json_api',
     'rest_framework_jwt',
     'koyla',
-	'frontend',
+    'frontend',
 ]
 
 MIDDLEWARE = [
@@ -92,12 +92,10 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'mela_backend_2',
         'USER': 'megatron',
-        'PASSWORD': 'ifuinikillu',
-        'HOST': 'Melasi-1470.postgres.pythonanywhere-services.com',
-        'PORT': '11470'
+        'HOST': 'localhost',
+        'PORT': '5432'
     }
-}
-
+} 
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -133,19 +131,19 @@ USE_TZ = True
 
 REST_FRAMEWORK = {
 
-	'EXCEPTION_HANDLER': 'rest_framework_json_api.exceptions.exception_handler',
-	'DEFAULT_PAGINATION_CLASS':
-	'rest_framework_json_api.pagination.PageNumberPagination',
-	'DEFAULT_PARSER_CLASSES': (
-		'rest_framework_json_api.parsers.JSONParser',
-		'rest_framework.parsers.FormParser',
-		'rest_framework.parsers.MultiPartParser'
-	),
-	'DEFAULT_RENDERER_CLASSES': (
-		'rest_framework_json_api.renderers.JSONRenderer',
-		'rest_framework.renderers.BrowsableAPIRenderer',
-	),
-	'DEFAULT_METADATA_CLASS': 'rest_framework_json_api.metadata.JSONAPIMetadata',
+    'EXCEPTION_HANDLER': 'rest_framework_json_api.exceptions.exception_handler',
+    'DEFAULT_PAGINATION_CLASS':
+    'rest_framework_json_api.pagination.PageNumberPagination',
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework_json_api.parsers.JSONParser',
+        'rest_framework.parsers.FormParser',
+        'rest_framework.parsers.MultiPartParser'
+    ),
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework_json_api.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ),
+    'DEFAULT_METADATA_CLASS': 'rest_framework_json_api.metadata.JSONAPIMetadata',
 }
 
 JSON_API_FORMAT_KEYS = 'dasherize'
