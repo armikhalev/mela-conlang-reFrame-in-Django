@@ -23,14 +23,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'x#&*$_t*py%6&ur7uyqdx*$lh@un1fgo(dvbilmcwqj$nwe!b%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     "0.0.0.0",
     "localhost",
     "127.0.0.1",
-	"www.mela-conlang.site",
-	"mela-conlang.site",
+    "www.mela-conlang.site",
+    "mela-conlang.site",
 ]
 
 
@@ -92,10 +92,11 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'mela_backend_2',
         'USER': 'megatron',
-        'HOST': 'localhost',
-        'PORT': '5432'
+        'PASSWORD': 'ifuinikillu',
+        'HOST': 'Melasi-1470.postgres.pythonanywhere-services.com',
+        'PORT': '11470'
     }
-} 
+}
 
 
 # Password validation
