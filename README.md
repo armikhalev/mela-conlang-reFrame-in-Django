@@ -14,3 +14,5 @@ if starting from scratch need to add all the packages, use pip:
 ## DEV
 - don't forget to set `DEBUG=False`, otherwise static files won't be available
 - then try `python manage.py runserver`
+
+NOTE: `settings.py` is not in git repo, it was easier to keep it private than deal with three files system for prod, dev and common. So, it should be privately shared.
