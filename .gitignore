@@ -139,5 +139,6 @@ sketch
 datadump.json
 /melavenv
 /static
+mela_backend_2/settings.py
 
 # End of https://www.gitignore.io/api/react,django
