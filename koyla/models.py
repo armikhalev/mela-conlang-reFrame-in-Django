@@ -14,7 +14,7 @@ class GrammarCard(models.Model):
 class Koyla(models.Model):
     "Word both in English and Mela with comments and optional GrammarCard"
     word = models.CharField(max_length=30)
-    la = models.CharField(max_length=30)
+    la = models.CharField(max_length=100)
     comment = models.CharField(max_length=1000)
     grammarCard = models.ForeignKey(GrammarCard, null=True, blank=True, on_delete=models.SET_NULL)
 
@@ -51,6 +51,6 @@ def create_koyla(sender, **kwargs):
     instance = kwargs['instance']
     if kwargs['created'] and hasattr(instance, 'front') and hasattr(instance, 'back'):
         # Assuming instance is `Card`
-        ki_koyla = Koyla.objects.create(word=instance.front, la=instance.back, comment="---")
+        ki_koyla = Koyla.objects.create(word=instance.back, la=instance.front, comment="---")
 
 post_save.connect(create_koyla, sender=Card)
