@@ -1,6 +1,6 @@
 # mela-reframe-app
 
-A [re-frame](https://github.com/Day8/re-frame) application designed for front-end of mela-conlang.site
+A [re-frame](https://github.com/Day8/re-frame) application designed for front-end of mela-conlang.space
 
 ## Development Mode
 
