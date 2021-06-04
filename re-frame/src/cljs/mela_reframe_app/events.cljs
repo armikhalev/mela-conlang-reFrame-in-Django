@@ -14,7 +14,7 @@
             [cljs.pprint :as pp]
             [re-frame.core :refer [reg-event-db reg-event-fx inject-cofx]]))
 
-(def domain-name "https://www.mela-conlang.site/")
+(def domain-name "https://www.mela-conlang.space/")
 
 ;; development server
 ;; (def domain-name "http://localhost:8000/")
