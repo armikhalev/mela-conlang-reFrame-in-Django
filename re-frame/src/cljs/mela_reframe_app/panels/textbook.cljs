@@ -38,7 +38,7 @@
       [:th "Example"]]]
     [:tbody
      (for [{:keys [letter name example]}
-           alphabet]
+           (sort-by :letter alphabet)]
 
        ^{:key letter}
        [:tr

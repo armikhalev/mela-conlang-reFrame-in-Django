@@ -139,16 +139,17 @@
 
 ;; --> Starts: process-request-words-response
 
+(s/def :context/grammarCard ::db/grammar-card)
 (s/def :context/card (s/keys :req-un [::db/word
                                       ::db/la
-                                      ::db/comment]))
+                                      ::db/comment
+                                      :context/grammarCard]))
 (s/def :context/attributes :context/card)
 
-(s/def :context/relationships (s/keys :req-un [::db/grammar-card]))
+(s/def :context/grammar-card (s/keys :req-un [::db/grammar-card]))
 
 (s/def :context/word-card (s/keys :req-un [::db/id
-                                           :context/attributes
-                                           :context/relationships]))
+                                           :context/attributes]))
 (s/def :context/data (s/coll-of :context/word-card))
 
 (s/def :context/effect (s/keys :req-un [:context/data]))
@@ -180,8 +181,8 @@
               (:id d)
               (assoc (:attributes data) :id d)
               (assoc d :grammar-card
-                     (get-in data [:relationships :grammarCard :data],
-                             {})) ;; otherwise return empty map
+                     (get-in data [:attributes :grammarCard], {})) ;; otherwise return empty map
+              (dissoc d :grammarCard)
               (conj acc d)))
           []
           response))
@@ -389,14 +390,10 @@
 
 (>defn grammar-card-info-clicked-handler
   ;; {::g/trace 4}
-  [db [_ id]]
+  [db [_ grammar-card]]
   [::db/db :grammar-card-info-clicked/input
    => ::db/db]
-  (assoc-in db [:cur-grammar-card-info]
-            (get-in (->> (:grammar-cards db)
-                         (filter #(= id (:id %)))
-                         first)
-                    [:attributes])))
+  (assoc-in db [:cur-grammar-card-info] grammar-card))
 
 (reg-event-db
  :grammar-card-info-clicked
@@ -429,7 +426,7 @@
 ;;
 (s/def :process-request-basic-words/basic-word (s/keys :req-un
                                                        [:process-request-basic-words/attributes
-                                                        :context/relationships ;; <- grammar-card relationship
+                                                        :context/grammar-card ;; <- grammar-card relationship
                                                         :process-request-basic-words/id
                                                         :process-request-basic-words/type]))
 (s/def :process-request-basic-words/data (s/coll-of :process-request-basic-words/basic-word))
@@ -453,9 +450,10 @@
                     (reduce
                      (fn [acc data]
                        (as-> data d
-                         (get-in d [:relationships :grammarCard :data])
-                         (if (contains? d :id) (:id d) false)
+                         (get-in data [:attributes :grammarCard], {})
+                         (if (contains? d :id) d false)
                          (assoc data :grammar-card d)
+                         (dissoc d :grammarCard)
                          (conj acc d)))
                      [] basic-words))) ))
 

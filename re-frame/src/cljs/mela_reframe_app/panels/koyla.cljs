@@ -44,7 +44,7 @@
    [:li [:strong "Comment: "] comment]
    (when (seq grammar-card)
      [:div.koyla-info-icon
-      {:on-click #(>dis-grammar-card-info-clicked (:id grammar-card))}
+      {:on-click #(>dis-grammar-card-info-clicked grammar-card)}
       [:img.info-icon
        {:src "/static/frontend/images/info_icon.png"
         :alt "info icon"}]])])
@@ -108,9 +108,7 @@
         [card-comp
 
          card
-         >dis-grammar-card-info-clicked
-         ]))]
-
+         >dis-grammar-card-info-clicked]))]
    [text-book-comp
 
     cur-grammar-card-info
