@@ -628,7 +628,3 @@
 [data-ember-action] {
   cursor: pointer; }
 
-* {
-  user-select: none;
-  -moz-user-select: none; }
-

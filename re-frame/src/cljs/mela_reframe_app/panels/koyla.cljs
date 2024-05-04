@@ -95,7 +95,7 @@
       :on-click #(>dis-change-lang target-lang)}
      (if (= cur-lang "English")
        "Change to Mela"
-       "Ali tu Engila")]
+       "Go tu Engila")]
 
     ;; word cards
     (let [card-comp (if (= cur-lang "English")
