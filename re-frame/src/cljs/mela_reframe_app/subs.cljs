@@ -63,7 +63,7 @@
  (fn [lang _]
    (if (= lang "English")
      (str "Type any English word to translate")
-     (str "Ta fasayla e la day lapey fe Mela"))))
+     (str "Ta pusla ecela li Mela alapeys"))))
 
 ;; Koyla
 
