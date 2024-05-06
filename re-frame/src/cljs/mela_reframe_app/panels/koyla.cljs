@@ -60,7 +60,7 @@
 
   (when (seq grammar-card)
     [:div.koyla-info-icon
-     {:on-click #(>dis-grammar-card-info-clicked (:id grammar-card))}
+     {:on-click #(>dis-grammar-card-info-clicked grammar-card)}
      [:img.info-icon
       {:src "/static/frontend/images/info_icon.png"
        :alt "info icon"}]])])
