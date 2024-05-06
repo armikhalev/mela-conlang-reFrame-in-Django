@@ -86,11 +86,12 @@
   [string?
    => string?]
   ;;
-  (let [sanitized (re-find #"[a-zA-Z0-9'-]*\s*[a-zA-Z0-9'-]*" input)]
+  (let [sanitized (re-find
+                   (js/RegExp. "[a-zäöüA-ZÄÖÜ0-9'-]*s*[a-zäöüA-ZÄÖÜ0-9'-]*") 
+                   input)]
     (if (some? sanitized)
       sanitized
       "")))
-
 
 ;; Components
 
