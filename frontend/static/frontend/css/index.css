@@ -351,9 +351,6 @@
   margin-top: 20px;
   cursor: default; }
 
-.koyla-source-label {
-  display: none; }
-
 .koyla-row {
   display: -webkit-box;
   display: -webkit-flex;
@@ -559,23 +556,6 @@
     width: 49.666667%; } }
 
 @media (min-width: 900px) {
-  .koyla-source-label {
-    display: block;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-flex-wrap: wrap;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    align-items: center;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    font-size: 24px;
-    font-weight: 500;
-    color: mediumvioletred;
-    width: 66.666667%;
-    margin-left: 16.666667%; }
   .koyla-row {
     width: 66.666667%;
     margin-left: 16.666667%; }

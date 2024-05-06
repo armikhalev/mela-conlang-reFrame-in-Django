@@ -79,7 +79,6 @@
                    >dis-show-grammar-card
                    <sub-grammar-card-show?]
   [:div
-   [:label.koyla-source-label cur-lang]
    [search-field
 
     placeholder
@@ -88,8 +87,8 @@
 
    [:div.word-results-row
     [:label.koyla-target-label (if (= cur-lang "English")
-                                 target-lang
-                                 "Engila")]
+                                 "English"
+                                 "Mela")]
     [:button.koyla-change-button
      {:type "submit"
       :on-click #(>dis-change-lang target-lang)}
