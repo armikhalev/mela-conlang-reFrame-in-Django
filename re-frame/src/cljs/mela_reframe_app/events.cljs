@@ -17,7 +17,7 @@
 (def domain-name "https://www.mela-conlang.space/")
 
 ;; development server
-;; (def domain-name "http://localhost:8000/")
+;; (def domain-name "http://127.0.0.1:8000/" )
 
 ;; we create an interceptor using `after`
 (def check-spec-interceptor (re-frame/after (partial spec-it ::db/db)))

@@ -24,12 +24,11 @@
                       category-el
                       >dis-categories-nav-touched
                       >dis-set-category-el]
-
   [:div
 
    ;; Alphabet table
 
-   [:h2.centered-text "Alphabet"]
+   [:h2.centered-text "Alphabet/Adefa"]
    [:table.textbook-alphabet
     [:thead
      [:tr
@@ -46,7 +45,7 @@
         [:td name]
         [:td example]])]]
 
-    ;; Textbook
+   ;; Textbook
 
    [:div.text-book
     (for [g (sort-by
