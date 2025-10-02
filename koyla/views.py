@@ -1,10 +1,14 @@
+import hmac, hashlib, os, subprocess
+
 from rest_framework import generics
 
 from rest_framework.decorators import api_view
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseForbidden
 
 from .models import Koyla, Card, Intro, GrammarCard, Alphabet
 from .serializers import KoylaSerializer, CardSerializer, IntroSerializer, GrammarCardSerializer, AlphabetSerializer
+
+SECRET = os.environ.get("GITHUB_WEBHOOK_SECRET", "9cbd312a9f8a4f76b2b2f9ff0e1c55d1")
 
 # English words
 class WordSet(generics.ListAPIView):
@@ -68,3 +72,15 @@ class AlphabetSet(generics.ListAPIView):
 	def get_queryset(self):
 		queryset = Alphabet.objects.all()
 		return queryset
+
+def github_webhook(request):
+    if request.method != "POST": return HttpResponseForbidden()
+    sig = request.headers.get("X-Hub-Signature-256")
+    body = request.body
+    if not sig or not hmac.compare_digest(
+        hmac.new(SECRET.encode(), body, hashlib.sha256).hexdigest(),
+        sig.split("=",1)[1]
+    ):
+        return HttpResponseForbidden()
+    subprocess.check_call(["/home/Melasi/melasi_backend/mela-conlang-reFrame-in-Django/deploy.sh"])
+    return HttpResponse("OK\n")

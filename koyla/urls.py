@@ -9,4 +9,5 @@ urlpatterns = [
 		path('grammar-cards/', views.GrammarCardSet.as_view()),
 		path('grammar-cards/(<pk>[0-9]+)/', views.GrammarCardDetail.as_view()),
 		path('alphabets/', views.AlphabetSet.as_view()),
+		path("github-webhook", views.github_webhook),
 ]
