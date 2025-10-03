@@ -3,7 +3,8 @@ import hmac, hashlib, os, subprocess
 from rest_framework import generics
 
 from rest_framework.decorators import api_view
-from django.http import HttpResponse, HttpResponseForbidden
+from django.http import HttpResponse, HttpResponseForbidden, HttpResponseBadRequest
+from django.views.decorators.csrf import csrf_exempt
 
 from .models import Koyla, Card, Intro, GrammarCard, Alphabet
 from .serializers import KoylaSerializer, CardSerializer, IntroSerializer, GrammarCardSerializer, AlphabetSerializer
@@ -73,14 +74,19 @@ class AlphabetSet(generics.ListAPIView):
 		queryset = Alphabet.objects.all()
 		return queryset
 
+def _valid_sig(request):
+	sig = request.headers.get("X-Hub-Signature-256", "")
+	if not sig.startswith("sha256="):
+		return False
+	mac = hmac.new(SECRET.encode(), request.body, hashlib.sha256).hexdigest()
+	return hmac.compare_digest(sig.split("=",1)[1], mac)
+
+@csrf_exempt
 def github_webhook(request):
-    if request.method != "POST": return HttpResponseForbidden()
-    sig = request.headers.get("X-Hub-Signature-256")
-    body = request.body
-    if not sig or not hmac.compare_digest(
-        hmac.new(SECRET.encode(), body, hashlib.sha256).hexdigest(),
-        sig.split("=",1)[1]
-    ):
-        return HttpResponseForbidden()
+    if request.method != "POST":
+        return HttpResponseBadRequest("POST only")
+    if not _valid_sig(request):
+        return HttpResponseForbidden("bad signature")
+
     subprocess.check_call(["/home/Melasi/melasi_backend/mela-conlang-reFrame-in-Django/deploy.sh"])
     return HttpResponse("OK\n")
