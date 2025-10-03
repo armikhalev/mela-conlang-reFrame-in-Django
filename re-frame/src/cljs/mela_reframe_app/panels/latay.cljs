@@ -61,7 +61,7 @@
   ;;
   [:div
    [search-field
-    "Type Mela basic word, then click on card"
+    "Type basic Mela word, then click on card"
     >dis-basic-words-search-input-entered
     basic-words-search-input]
    (let [ sorted-by-alphabet (sort-by (fn [{attr :attributes}] (.charCodeAt (-> attr :front first))) basic-words) ]
