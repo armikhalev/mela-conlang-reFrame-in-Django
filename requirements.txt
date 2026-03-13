@@ -6,6 +6,6 @@ djangorestframework-jsonapi==8.0.0
 djangorestframework-jwt==1.11.0
 inflection==0.5.1
 psycopg2==2.9.10
-PyJWT==1.7.1
+PyJWT==2.12.0
 sqlparse==0.5.3
 typing_extensions==4.15.0
